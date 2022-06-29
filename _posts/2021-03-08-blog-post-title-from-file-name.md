@@ -1,3 +1,3 @@
-## My First Blog Post
+## A Gentle Introduction Into Deep Reinforcement Learning
 
 ### Hello World
