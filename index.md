@@ -1,5 +1,1 @@
-Here you can say lots of fun things about your site.
-
-Maybe say a some things about yourself.
-
-Or maybe what you plan to blog about.
+This blog documents my experience as a machine learning engineer, specifically deep reinforcement learning, neuromorphic computing, and generative modeling. This blog takes a ground-up approach to understanding ML by analyzing the foundational fields from which it is built, primarily: neuroscience, computer science, and mathematics
