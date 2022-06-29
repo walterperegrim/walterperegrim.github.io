@@ -1,6 +1,6 @@
-title: "My Blogs Name"
-author: "Default Author Name"
-description: "Some short description of your blog can go here." # This will show up in places like twitter, linkedin, etc, if you share your sites url as a post.
+title: "Welcome To The Garcia Blog"
+author: "Walter Peregrim"
+description: "This blog documents my experience as a machine learning engineer, specifically deep reinforcement learning, neuromorphic computing, and generative modeling. This blog takes a ground-up approach to understanding ML by analyzing the foundational fields from which it is built, primarily: neuroscience, computer science, and mathematics"
 
 # Email / Social media user names used by the minima theme:
 # All of these are optional and can be removed or commented out
