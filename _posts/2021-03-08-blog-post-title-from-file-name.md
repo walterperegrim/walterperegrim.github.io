@@ -2,13 +2,7 @@
 
 ## RL Algorithm Taxonomy
 
-<!-- 
-    <a href="https://github.com/walterperegrim" target="_blank" rel="nofollow">
-        <img src="https://github.com/walterperegrim/walterperegrim.github.io/blob/main/_posts/rl-taxonomy.gv.svg" alt="Github" width="30px" height="30px" />
-    </a> &nbsp;
--->
-
-![Diagram](http://walterperegrim.github.io/drawio-github/diagram.png)
+![Diagram](http://walterperegrim.github.io/main/rl-taxonomy.gv.svg)
 
 ### Model-Free RL
 A model-free algorithm is an algorithm that estimates the optimal policy without using or estimating the dynamics (transition & reward functions) of the environment.\ In practice, a model-free algorithm either estimates a "value function" or the "policy" directly from experience (that is, the interaction between the agent and \ environment), without using neither the transition function nor the reward function. A value function can be thought of as a function which evaluates a state (or an \ action taken in a state), for all states. From this value function, a policy can then be derived.\
