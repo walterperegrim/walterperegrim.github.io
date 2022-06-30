@@ -2,11 +2,12 @@
 
 ## RL Algorithm Taxonomy
 
-![Diagram](http://walterperegrim.github.io/main/rl-taxonomy.gv.svg)
+![rl-taxonomy](https://user-images.githubusercontent.com/44306830/176572240-3855f712-34db-4704-a3d8-c5d7c03c8758.svg)
 
 ### Model-Free RL
 A model-free algorithm is an algorithm that estimates the optimal policy without using or estimating the dynamics (transition & reward functions) of the environment.\ In practice, a model-free algorithm either estimates a "value function" or the "policy" directly from experience (that is, the interaction between the agent and \ environment), without using neither the transition function nor the reward function. A value function can be thought of as a function which evaluates a state (or an \ action taken in a state), for all states. From this value function, a policy can then be derived.\
 SubClasses: Value Gradient, Policy Gradient
+
 
 #### Policy Gradient (On-Policy)
 An on-policy algorithm is an algorithm that, during training, chooses actions using a policy that is derived from the current estimate of the optimal policy, \ 
