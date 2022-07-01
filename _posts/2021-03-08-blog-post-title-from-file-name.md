@@ -42,3 +42,6 @@ A model-based learning agent uses knowledge of the environment dynamics in order
 
 #### on-policy vs off-policy
 The primary strength of policy optimization methods is that they are principled, in the sense that you directly optimize for the thing you want. This tends to make \ them stable and reliable. By contrast, Q-learning methods only indirectly optimize for agent performance, by training Q_{\theta} to satisfy a self-consistency \ equation. There are many failure modes for this kind of learning, so it tends to be less stable. But, Q-learning methods gain the advantage of being substantially \ more sample efficient when they do work, because they can reuse data more effectively than policy optimization techniques. Serendipitously, policy optimization and \ Q-learning are not incompatible (and under some circumstances, equivalent), and there exist a range of algorithms that live in between the two extremes. Algorithms \ that live on this spectrum are able to carefully trade-off between the strengths and weaknesses of either side
+
+
+###Comparison Of Popular Libraries
