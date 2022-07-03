@@ -1,47 +1,33 @@
-# A Gentle Introduction Into Deep Reinforcement Learning
+# An Overview Of Deep Reinforcement Learning
 
 ## RL Algorithm Taxonomy
+![tax](https://spinningup.openai.com/en/latest/_images/rl_algorithms_9_15.svg))
 
-![rl-taxonomy](https://user-images.githubusercontent.com/44306830/176572240-3855f712-34db-4704-a3d8-c5d7c03c8758.svg)
-![tax](https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-981-15-4095-0_3/MediaObjects/492103_1_En_3_Fig1_HTML.png?as=webp)
 ### Model-Free RL
-A model-free algorithm is an algorithm that estimates the optimal policy without using or estimating the dynamics (transition & reward functions) of the environment.\ In practice, a model-free algorithm either estimates a "value function" or the "policy" directly from experience (that is, the interaction between the agent and \ environment), without using neither the transition function nor the reward function. A value function can be thought of as a function which evaluates a state (or an \ action taken in a state), for all states. From this value function, a policy can then be derived.\
-SubClasses: Value Gradient, Policy Gradient
+A model-free algorithm is an algorithm that estimates the optimal policy without using or estimating the dynamics (transition & reward functions) of the environment. In practice, a model-free algorithm either estimates a "value function" or the "policy" directly from experience (that is, the interaction between the agent and  environment), without using neither the transition function nor the reward function. A value function can be thought of as a function which evaluates a state (or an action taken in a state), for all states. From this value function, a policy can then be derived. Two main approaches to represent agents with model-free reinforcement learning is Policy optimization and Q-learning.
 
 
-#### Policy Gradient (On-Policy)
-An on-policy algorithm is an algorithm that, during training, chooses actions using a policy that is derived from the current estimate of the optimal policy, \ 
-while the updates are also based on the current estimate of the optimal policy.\
+#### Policy Optimization
+In policy optimization methods the agent learns directly the policy function that maps state to action. The policy is determined without using a value function
 Algorithms: REINFORCE, VPG, SARSA, PPO, TRPO
 
-#### Value Gradient (Off-Policy)
-An off-policy algorithm is an algorithm that, during training, uses a behaviour policy (that is, the policy it uses to select actions) that is different than the \ optimal policy it tries to estimate (the optimal policy).\
+#### Q-learning
+Q-learning learns the action-value function Q(s, a): how good to take an action at a particular state. Basically a scalar value is assigned over an action a given the state s.
 Algorithms: Q-Learning, DQN, DDQN, DDPG, SAC
 
 
 ### Model-Based RL
-A model-based algorithm is an algorithm that uses the transition function (and the reward function) in order to estimate the optimal policy. The agent may have access \ only to an approximation of the transition function and reward functions, which can be learned by the agent while it interacts with the environment or it can be given \ to the agent (e.g. by another agent). In general, in a model-based algorithm, the agent can potentially predict the dynamics of the environment (during or after the \ learning phase), because it has an estimate of the transition function (and reward function). However, note that the transition and reward functions that the agent \ uses in order to improve its estimate of the optimal policy might just be approximations of the "true" functions. Hence, the optimal policy might never be found (because of these approximations).\
-SubClasses: Pure Planning, Expert Iteration, & Policy Searching
+Model-based RL has a strong influence from control theory, and the goal is to plan through an f(s,a) control function to choose the optimal actions. Thing of it as the RL field where the laws of physics are provided by the creator. The drawback of model-based methods is that although they have more assumptions and approximations on a given task, but may may be limited only to these specific types of tasks. There are two main approaches: learning the model or learn given the model.
 
-#### Pure Planning, Expert Iteration, & Policy Searching
-The most basic approach never explicitly represents the policy, and instead, uses pure planning techniques like model-predictive control (MPC) to select actions.\
-In MPC, each time the agent observes the environment, it computes a plan which is optimal with respect to the model, where the plan describes all actions to take \ over some fixed window of time after the present. (Future rewards beyond the horizon may be considered by the planning algorithm through the use of a learned value \ function.) The agent then executes the first action of the plan, and immediately discards the rest of it. It computes a new plan each time it prepares to interact \ with the environment, to avoid using an action from a plan with a shorter-than-desired planning horizon.
+#### Learn the Model
+To learn the model a base policy is ran, like a random or any educated policy, while the trajectory is observed
 
-
-### RL Algorithm Tradeoffs
-Sample efficiency — how many samples are needed to train a good policy?\
-Stability & convergence — how easy & how fast the model converges.\
-Generalization — Will the model generalize to other tasks?\
-Assumptions & approximation — Does the method have any other constraints? Does the method work on discrete or continuous action space? What approximate is used?\
-Exploration — How well does it explore the action space?\
-Policy-centric vs Model-centric.\
-Value-learning vs Policy Gradient\
-
-#### model-free vs model-based
-A model-based learning agent uses knowledge of the environment dynamics in order to make predictions of expected outcomes. A model-free learning agent does not use \ such knowledge. The model here can be provided explicitly by the developer - that could be code for physics to predict a mechanical system, or it might be the rules \ of a board game that the agent is allowed to know and query to predict outcomes of actions before taking them. Models can also be learned statistically from \ experience, although that is harder to make effective.
-
-#### on-policy vs off-policy
-The primary strength of policy optimization methods is that they are principled, in the sense that you directly optimize for the thing you want. This tends to make \ them stable and reliable. By contrast, Q-learning methods only indirectly optimize for agent performance, by training Q_{\theta} to satisfy a self-consistency \ equation. There are many failure modes for this kind of learning, so it tends to be less stable. But, Q-learning methods gain the advantage of being substantially \ more sample efficient when they do work, because they can reuse data more effectively than policy optimization techniques. Serendipitously, policy optimization and \ Q-learning are not incompatible (and under some circumstances, equivalent), and there exist a range of algorithms that live in between the two extremes. Algorithms \ that live on this spectrum are able to carefully trade-off between the strengths and weaknesses of either side
+#### Given the Model
+I would say this had the “hypest” hype in recent time when AlphaGo Zero defeated the best go player in the world
 
 
-###Comparison Of Popular Libraries
+### model-free vs model-based
+One of the most important branching points in an RL algorithm is the question of whether the agent has access to (or learns) a model of the environment. By a model of the environment, we mean a function which predicts state transitions and rewards.The main upside to having a model is that it allows the agent to plan by thinking ahead, seeing what would happen for a range of possible choices, and explicitly deciding between its options. Agents can then distill the results from planning ahead into a learned policy. A particularly famous example of this approach is AlphaZero. When this works, it can result in a substantial improvement in sample efficiency over methods that don’t have a model. The main downside is that a ground-truth model of the environment is usually not available to the agent. If an agent wants to use a model in this case, it has to learn the model purely from experience, which creates several challenges. The biggest challenge is that bias in the model can be exploited by the agent, resulting in an agent which performs well with respect to the learned model, but behaves sub-optimally (or super terribly) in the real environment. Model-learning is fundamentally hard, so even intense effort—being willing to throw lots of time and compute at it—can fail to pay off. Algorithms which use a model are called model-based methods, and those that don’t are called model-free. While model-free methods forego the potential gains in sample efficiency from using a model, they tend to be easier to implement and tune. As of the time of writing this introduction (September 2018), model-free methods are more popular and have been more extensively developed and tested than model-based methods.
+
+
+### Comparison Of Popular Libraries
