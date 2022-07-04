@@ -1,16 +1,35 @@
 # An Overview Of Deep Reinforcement Learning
 
+## Key Concepts & Terminology
+
+### RL Core
+#### states and observations,
+#### action spaces
+#### policies
+#### trajectories
+#### value functions
+#### Advantage Functions
+
+
+
+### Dynamic Programming
+
+#### Policy Evaluation
+
+#### Policy Improvement
+
+#### Policy Iteration
+
 ## RL Algorithm Taxonomy
 ![tax](https://spinningup.openai.com/en/latest/_images/rl_algorithms_9_15.svg))
 
 ### Model-Free RL
-A model-free algorithm is an algorithm that estimates the optimal policy without using or estimating the dynamics (transition & reward functions) of the environment. In practice, a model-free algorithm either estimates a "value function" or the "policy" directly from experience (that is, the interaction between the agent and  environment), without using neither the transition function nor the reward function. A value function can be thought of as a function which evaluates a state (or an action taken in a state), for all states. From this value function, a policy can then be derived. Two main approaches to represent agents with model-free reinforcement learning is Policy optimization and Q-learning.
+A model-free algorithm is an algorithm that estimates the optimal policy without using or estimating the dynamics (transition & reward functions) of the environment. In practice, a model-free algorithm either estimates a "value function" or the "policy" directly from experience (that is, the interaction between the agent and  environment), without using neither the transition function nor the reward function. A value function can be thought of as a function which evaluates a state (or an action taken in a state), for all states. From this value function, a policy can then be derived. 
 
-
-#### Policy Optimization
+#### Policy Gradient
 In policy optimization methods the agent learns directly the policy function that maps state to action. The policy is determined without using a value function. Methods in this family optimize the parameters theta either directly by gradient ascent on the performance objective, or indirectly, by maximizing local approximations of. This optimization is almost always performed on-policy, which means that each update only uses data collected while acting according to the most recent version of the policy. Policy optimization also usually involves learning an approximator for the on-policy value function, which gets used in figuring out how to update the policy.
 
-##### Vanilla Policy Gradient
+##### REINFORCE
 The key idea underlying policy gradients is to push up the probabilities of actions that lead to higher return, and push down the probabilities of actions that lead to lower return, until you arrive at the optimal policy.
 ###### Quick Facts
 VPG is an on-policy algorithm.\
@@ -33,14 +52,14 @@ An alternate version of SAC, which slightly changes the policy update rule, can 
 
 
 
-#### Q-learning
+#### Value Gradient
 Q-learning learns the action-value function Q(s, a): how good to take an action at a particular state. Basically a scalar value is assigned over an action a given the state s.
 
 ##### DQN
 
-##### DDQN
+##### SARSA
 
-##### Rainbow DQN
+##### Rainbow
 
 ##### HRDQN
 
@@ -53,7 +72,7 @@ Model-based RL has a strong influence from control theory, and the goal is to pl
 
 ### Considerations When Choosing An Algorithm
 
-#### Bias v.s. Variance
+#### Bias vs Variance
 
 #### Sample efficiency
 
