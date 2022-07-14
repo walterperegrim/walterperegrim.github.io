@@ -1,1 +1,1 @@
-This blog documents my experience as a machine learning engineer, specifically deep, hierarchical, and inverse reinforcement learning. This blog takes a ground-up approach to developing both a theoretical & practical understanding of RL, focusing on the foundational concepts from which it is built, primarily: neuroscience, computer science, and mathematics.
+
