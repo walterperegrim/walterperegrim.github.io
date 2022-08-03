@@ -3,21 +3,42 @@
 ## Key Concepts & Terminology
 
 ### RL Core
+
+#### Advantage Function
+The advantage of selecting a certain action from a certain state
+
+#### Actor Critic
+AC algorithms are a hybrid of the following two popular RL methods: calculating the value functions or directly compute a policy
+
+#### Bellman Equations
+The Bellman equation defines the relationships between a given state (or state-action pair) to its successors
+
+#### Discount Factor
+The discount factor, usually denoted as γ, is a factor multiplying the future expected reward, and varies on the range of [0,1]. It controls the importance of the future rewards versus the immediate ones.
+
+#### Experience Replay
+As RL tasks have no pre-generated training sets which they can learn from, the agent needs to keep records of all the state-transitions it encountered so it can learn from them later. The memory-buffer used to store the encounters is the experience replay.
+
+#### Markov Decision Process (MDP)
+The Markov Property means that each state is dependent solely on its preceding state, the selected action taken from that state and the reward received immediately after that action was executed.
+
+#### Monte Carlo (MC)
+Monte Carlo methods are algorithms which use repeated random sampling in order to achieve a result. They are used quite often in Reinforcement Learning algorithms to obtain expected values.
+
+#### REINFORCE Algorithms
+REINFORCE algorithms are a family of Reinforcement Learning algorithms which update their policy parameters according to the gradient of the policy with respect to the policy-parameters
+
+#### Temporal-Difference (TD)
+Temporal Difference is a learning method which combines both Dynamic Programming and Monte Carlo principles; it learns “on the fly” similarly to Monte Carlo, yet updates its estimates like Dynamic Programming
+
 #### states and observations
-#### action spaces
+#### actions
 #### policies
 #### trajectories
 #### value functions
-#### Advantage Functions
-
-
-
 ### Dynamic Programming
-
 #### Policy Evaluation
-
 #### Policy Improvement
-
 #### Policy Iteration
 
 ## RL Algorithm Taxonomy
